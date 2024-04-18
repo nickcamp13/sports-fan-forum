@@ -1,9 +1,17 @@
+import { Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Posts from "./pages/Posts"
+import Create from "./pages/Create";
 import "./App.css";
 
 function App() {
   return (
     <>
-      <h1>nineteenth hole</h1>
+      <Navbar />
+        <Routes>
+          <Route path="/" element={<Posts />}/>
+          <Route path="/create-post" element={<Create />}/>
+        </Routes>
     </>
   );
 }
