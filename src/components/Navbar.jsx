@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
+import { Typography } from "@mui/material";
 
 const Navbar = () => {
-
   return (
     <nav>
-      <h1>THE NINETEENTH HOLE</h1>
+      <Typography>
+        THE NINETEENTH HOLE
+      </Typography>
       <ul>
         <li>
           <Link to={"/"}>Home Feed</Link>
@@ -14,7 +16,7 @@ const Navbar = () => {
         </li>
       </ul>
     </nav>
-  )
+  );
 };
 
 export default Navbar;
