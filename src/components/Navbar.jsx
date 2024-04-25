@@ -5,14 +5,14 @@ const Navbar = () => {
   return (
     <nav>
       <Typography>
-        THE NINETEENTH HOLE
+        ESFF
       </Typography>
       <ul>
         <li>
-          <Link to={"/"}>Home Feed</Link>
+          <Link to={""}>Home Feed</Link>
         </li>
         <li>
-          <Link to={"/create-post"}>Add New Post</Link>
+          <Link to={"create-post"}>Add New Post</Link>
         </li>
       </ul>
     </nav>
