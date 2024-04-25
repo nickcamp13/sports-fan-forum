@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Grid } from "@mui/material";
 
 import Navbar from "./components/Navbar";
-import Home from "./pages/HomeFeed";
+import HomeFeed from "./pages/HomeFeed";
 import Create from "./pages/Create";
 import RightDrawer from "./components/RightDrawer";
 import Post from "./pages/Post";
@@ -17,9 +17,9 @@ function App() {
         </Grid>
         <Grid item md={10}>
           <Routes>
-            <Route path="" element={<Home />} />
+            <Route path="" element={<HomeFeed />} />
             <Route path="create-post" element={<Create />} />
-            <Route path="post/:title" element={<Post />} />
+            <Route path="post/:postId" element={<Post />} />
             <Route path="*" element={<NoMatch />} />
           </Routes>
         </Grid>
