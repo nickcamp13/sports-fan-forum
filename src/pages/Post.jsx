@@ -77,6 +77,7 @@ const Post = () => {
   };
 
   const handleCommentSubmit = async (e) => {
+    e.preventDefault()
     if (commentText.trim()) {
       try {
         const newComment = await submitComment(postId, commentText);
