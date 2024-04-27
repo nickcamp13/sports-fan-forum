@@ -1,13 +1,13 @@
-import { Typography } from "@mui/material";
+import { Typography, Paper } from "@mui/material";
 
 const Comment = ({ comment }) => {
   const { comment_text, created_at } = comment;
 
   return (
-    <div>
+    <Paper>
       <Typography variant="body1">{comment_text}</Typography>
-      <Typography variant="body2">{created_at}</Typography>
-    </div>
+      {/* <Typography variant="body2">{created_at}</Typography> */}
+    </Paper>
   );
 };
 

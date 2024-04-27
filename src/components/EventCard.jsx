@@ -25,14 +25,21 @@ const EventCard = ({ event }) => {
   }, []);
 
   if (!homeTeam || !awayTeam) {
-    return <Typography variant="body1">Loading Event Data...</Typography>;
+    return (
+      <Typography variant="body1" sx={{ color: "#F3E8EE" }}>
+        Loading Event Data...
+      </Typography>
+    );
   }
 
   return (
-    <Box>
+    <Box sx={{ width: 200, margin: "0 auto" }}>
       <Box>
         <img src={homeTeam.strTeamBadge} alt="" />
-        <Typography variant="body1"> vs. </Typography>
+        <Typography variant="body1" sx={{ color: "#F3E8EE" }}>
+          {" "}
+          vs.{" "}
+        </Typography>
         <img src={awayTeam.strTeamBadge} alt="" />
       </Box>
     </Box>

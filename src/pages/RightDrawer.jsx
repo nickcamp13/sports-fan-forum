@@ -9,45 +9,54 @@ const URL = `https://www.thesportsdb.com/api/v1/json/${KEY}`;
 const RightDrawer = () => {
   const [events, setEvents] = useState(null);
   const [date, setDate] = useState(new Date());
-  const [drawerHeader, setDrawerHeader] = useState("Today's Events")
-  const [isLoading, setIsLoading] = useState(true)
+  const [drawerHeader, setDrawerHeader] = useState("Today's Events");
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
-      setIsLoading(true)
+      setIsLoading(true);
       const leagueID = 4387; // NBA ID
-      const [year, month, day] = [date.getFullYear(), date.getMonth() + 1, date.getDate() + 1]
+      const [year, month, day] = [
+        date.getFullYear(),
+        date.getMonth() + 1,
+        date.getDate() + 1,
+      ];
       const formattedMonth = month < 10 ? `0${month}` : month;
       let formattedDay = day < 10 ? `0${day}` : day;
 
       // fetch today's event or next 15
-      let res = await axios.get(`${URL}/eventsday.php?d=${year}-${formattedMonth}-${formattedDay}&l=${leagueID}`);
+      let res = await axios.get(
+        `${URL}/eventsday.php?d=${year}-${formattedMonth}-${formattedDay}&l=${leagueID}`
+      );
       if (res.data === "") {
-        res = await axios.get(`${URL}/eventsnextleague.php?id=${leagueID}`)
-        setDrawerHeader("Upcoming Events")
-      } 
+        res = await axios.get(`${URL}/eventsnextleague.php?id=${leagueID}`);
+        setDrawerHeader("Upcoming Events");
+      }
 
-      setEvents(res.data.events)
-      setIsLoading(false)
+      setEvents(res.data.events);
+      setIsLoading(false);
     };
 
     fetchData();
   }, [date]);
 
   if (isLoading) {
-    return <Typography>Loading...</Typography>;
+    return <Typography sx={{ color: "#F3E8EE" }}>Loading...</Typography>;
   }
 
-  return(
-    <div>
-      <Typography variant="subtitle2">{drawerHeader}</Typography>
-      <Box>
-        {events && events.map((event) => (
-          <EventCard key={`event-${event.idEvent}`} event={event}/>
-        ))}
+  return (
+    <Box sx={{padding: "1rem"}}>
+      <Typography variant="subtitle2" sx={{ color: "#F3E8EE" }}>
+        {drawerHeader}
+      </Typography>
+      <Box sx={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+        {events &&
+          events.map((event) => (
+            <EventCard key={`event-${event.idEvent}`} event={event} />
+          ))}
       </Box>
-    </div>
-  )
+    </Box>
+  );
 };
 
 export default RightDrawer;

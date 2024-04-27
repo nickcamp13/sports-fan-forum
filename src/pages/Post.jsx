@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Comment from "../components/Comment";
 import supabase from "../supabaseClient";
-import { Box, Typography, Button } from "@mui/material";
+import { Box, Typography, Button, Paper } from "@mui/material";
 
 const Post = () => {
   const [post, setPost] = useState(null);
@@ -97,43 +97,69 @@ const Post = () => {
   }
   return (
     <Box>
-      <Box>
-        <Typography variant="h2">{post.title}</Typography>
-        <img src={post.image_url} alt="" />
-        <Typography variant="body1">{post.content}</Typography>
-      </Box>
-      <Box>
-        <Typography variant="subtitle1">Upvotes: {post.upvotes}</Typography>
-        <Button variant="outlined" onClick={handleUpvote}>
-          Upvote
-        </Button>
-        <Button
-          variant="outlined"
-          onClick={handleDownvote}
-          disabled={hasDownvoted}
+      <Paper sx={{ mb: "1rem" }}>
+        <Typography variant="h2" sx={{ mb: "1rem" }}>
+          {post.title}
+        </Typography>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "0.5rem",
+            mb: "1rem",
+          }}
         >
-          Downvote
-        </Button>
-      </Box>
-      <Box>
-        <form onSubmit={handleCommentSubmit}>
-          <input
-            type="text"
-            value={commentText}
-            id="commentText"
-            name="commentText"
-            onChange={(e) => setCommentText(e.target.value)}
-            placeholder="Leave a comment"
-          />
-          <Button variant="contained" type="submit">
-            Add Comment
+          {post.image_url && <img src={post.image_url} alt="" />}
+          <Typography variant="body1">{post.content}</Typography>
+        </Box>
+        <Box>
+          <Typography variant="subtitle1">Upvotes: {post.upvotes}</Typography>
+          <Button variant="outlined" onClick={handleUpvote}>
+            Upvote
           </Button>
+          <Button
+            variant="outlined"
+            onClick={handleDownvote}
+            disabled={hasDownvoted}
+          >
+            Downvote
+          </Button>
+        </Box>
+      </Paper>
+      <Box>
+        <form
+          onSubmit={handleCommentSubmit}
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            marginBottom: "1rem",
+          }}
+        >
+          <Box>
+            <textarea
+              cols="40"
+              rows="5"
+              value={commentText}
+              onChange={(e) => setCommentText(e.target.value)}
+              placeholder="Leave a comment"
+            />
+          </Box>
+          <Box>
+            <Button variant="contained" type="submit">
+              Add Comment
+            </Button>
+          </Box>
         </form>
         <Box>
-          {comments.length > 0 &&
-            comments.map((comment) => (
-              <Comment key={comment.id} comment={comment} />
-            ))}
+          <Typography variant="h5" sx={{ mb: "0.5rem" }}>
+            Comments
+          </Typography>
+          <Box sx={{display: "flex", flexDirection: "column", gap: "0.5rem"}}>
+            {comments.length > 0 &&
+              comments.map((comment) => (
+                <Comment key={comment.id} comment={comment} />
+              ))}
+          </Box>
         </Box>
       </Box>
     </Box>

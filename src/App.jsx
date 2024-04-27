@@ -15,7 +15,7 @@ function App() {
         <Grid item xs={12}>
           <Navbar />
         </Grid>
-        <Grid item md={10}>
+        <Grid item md={9}>
           <Box sx={{padding: "1rem"}}>
             <Routes>
               <Route path="" element={<HomeFeed />} />
@@ -25,7 +25,7 @@ function App() {
             </Routes>
           </Box>
         </Grid>
-        <Grid item md={2}>
+        <Grid item md={3} sx={{bgcolor: "#25291C", minHeight: "100vh"}}>
           <RightDrawer />
         </Grid>
       </Grid>

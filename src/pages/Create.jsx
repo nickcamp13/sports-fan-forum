@@ -1,5 +1,6 @@
 import { useState } from "react";
 import supabase from "../supabaseClient";
+import { Box, Typography, Paper, Button } from "@mui/material";
 
 const Create = () => {
   const [title, setTitle] = useState("");
@@ -69,37 +70,46 @@ const Create = () => {
   };
 
   return (
-    <div>
-      <h2>Make A New Post</h2>
+    <Box>
+      <Typography variant="h2" sx={{mb: "1rem"}}>Make A New Post</Typography>
       {error && <p style={{ color: "red" }}>{error}</p>}
-      <form onSubmit={handleSubmit}>
-        <div>
+      <Paper sx={{ width: "400px" }}>
+        <form
+          onSubmit={handleSubmit}
+          style={{ display: "flex", flexDirection: "column" }}
+        >
           <label htmlFor="">Title</label>
           <input
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             required
+            style={{ marginBottom: "0.5rem" }}
           />
-        </div>
-        <div>
+          <label htmlFor="">Content</label>
           <textarea
-            cols="30"
+            cols="40"
             rows="10"
             value={content}
             onChange={(e) => setContent(e.target.value)}
             placeholder="Add Text..."
+            style={{ marginBottom: "0.5rem" }}
           ></textarea>
-        </div>
-        <div>
           <label>Image Upload</label>
-          <input type="file" accept="image/*" onChange={handleImageChange} />
-        </div>
-        <button type="submit" disabled={isSubmitting}>
-          {isSubmitting ? "Creating New Post..." : "Create Post"}
-        </button>
-      </form>
-    </div>
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleImageChange}
+            style={{ marginBottom: "0.5rem" }}
+          />
+          <Box>
+            <Button type="submit" disabled={isSubmitting}>
+              {isSubmitting ? "Creating New Post..." : "Create Post"}
+            </Button>
+          </Box>
+        </form>
+      </Paper>
+    </Box>
   );
 };
 

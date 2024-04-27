@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import supabase from "../supabaseClient";
-import { Box } from "@mui/material";
+import { Box, Paper, Typography } from "@mui/material";
 import FeedPost from "../components/FeedPost";
 import { Link } from "react-router-dom";
 
@@ -45,18 +45,21 @@ const HomeFeed = () => {
   }
   return (
     <Box>
-      <Box>
+      <Typography variant="h2">Home Feed</Typography>
+      <Box sx={{ mb: "2rem" }}>
         <select value={orderBy} onChange={handleSortChange}>
           <option value="time">Sort by Time</option>
           <option value="upvotes">Sort by Upvotes</option>
         </select>
       </Box>
-      <Box>
+      <Box sx={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
         {feed &&
           sortedPosts.map((post) => (
-            <Link key={post.id} to={`post/${post.id}`}>
-              <FeedPost post={post} />
-            </Link>
+            <Paper key={post.id} elevation={3} sx={{ maxWidth: 0.75, "a:hover": "#DE3C4B" }}>
+              <Link to={`post/${post.id}`}>
+                <FeedPost post={post} />
+              </Link>
+            </Paper>
           ))}
       </Box>
     </Box>

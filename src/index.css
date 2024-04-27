@@ -3,20 +3,12 @@
     sans-serif;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
-  --primary-txt-color: #3a3335;
-  --emphasis-txt-color: #b4a0e5;
-  --hover-color: #5b8e7d;
+  --primary-txt-color: #25291C;
+  --emphasis-txt-color: #5171A5;
+  --hover-color: #DE3C4B;
 }
 
 body {
   min-width: 320px;
   min-height: 100vh;
-}
-
-img {
-  width: 30%;
-}
-
-a:hover {
-  color: var(--emphasis-txt-color);
 }
