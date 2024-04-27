@@ -1,8 +1,8 @@
-# Web Development Final Project - _Nineteenth Hole_
+# Web Development Final Project - _Entertainment Sports Fan Forum_
 
 Submitted by: **Nicholas Campos**
 
-This web app: **insert description**
+This web app: **Users discuss anything related to sports!**
 
 Time spent: **12** hours spent in total
 

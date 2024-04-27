@@ -1,21 +1,24 @@
 import { Link } from "react-router-dom";
-import { Typography } from "@mui/material";
+import { Typography, AppBar, Button, Toolbar, Box } from "@mui/material";
 
 const Navbar = () => {
   return (
-    <nav>
-      <Typography>
-        ESFF
-      </Typography>
-      <ul>
-        <li>
-          <Link to={""}>Home Feed</Link>
-        </li>
-        <li>
-          <Link to={"create-post"}>Add New Post</Link>
-        </li>
-      </ul>
-    </nav>
+    <AppBar
+      position="sticky"
+      sx={{ display: "flex", justifyContent: "space-between" }}
+    >
+      <Toolbar sx={{display: "flex", justifyContent: "space-between"}}>
+        <Typography variant="h3">Entertainment Sports Fan Forum</Typography>
+        <Box sx={{display: "flex"}}>
+          <Button>
+            <Link to={""}>Home Feed</Link>
+          </Button>
+          <Button>
+            <Link to={"create-post"}>Add New Post</Link>
+          </Button>
+        </Box>
+      </Toolbar>
+    </AppBar>
   );
 };
 

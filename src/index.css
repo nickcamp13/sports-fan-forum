@@ -12,3 +12,11 @@ body {
   min-width: 320px;
   min-height: 100vh;
 }
+
+img {
+  width: 30%;
+}
+
+a:hover {
+  color: var(--emphasis-txt-color);
+}

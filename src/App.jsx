@@ -1,10 +1,10 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Grid } from "@mui/material";
+import { Grid, Box } from "@mui/material";
 
 import Navbar from "./components/Navbar";
 import HomeFeed from "./pages/HomeFeed";
 import Create from "./pages/Create";
-import RightDrawer from "./components/RightDrawer";
+import RightDrawer from "./pages/RightDrawer";
 import Post from "./pages/Post";
 import NoMatch from "./pages/NoMatch";
 
@@ -16,12 +16,14 @@ function App() {
           <Navbar />
         </Grid>
         <Grid item md={10}>
-          <Routes>
-            <Route path="" element={<HomeFeed />} />
-            <Route path="create-post" element={<Create />} />
-            <Route path="post/:postId" element={<Post />} />
-            <Route path="*" element={<NoMatch />} />
-          </Routes>
+          <Box sx={{padding: "1rem"}}>
+            <Routes>
+              <Route path="" element={<HomeFeed />} />
+              <Route path="create-post" element={<Create />} />
+              <Route path="post/:postId" element={<Post />} />
+              <Route path="*" element={<NoMatch />} />
+            </Routes>
+          </Box>
         </Grid>
         <Grid item md={2}>
           <RightDrawer />
